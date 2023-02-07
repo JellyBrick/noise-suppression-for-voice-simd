@@ -38,10 +38,15 @@
 #include "rnnoise/rnn_data.h"
 #include <stdio.h>
 
-// SIMD
+#if defined(__i386__) || defined(__x86_64__) // for SIMD
 #include <immintrin.h>
+#if defined(__GNUC__)
 #include <cpuid.h>
-#include <xsaveintrin.h>
+#include <x86gprintrin.h>
+#else // _WIN32
+#include <intrin.h>
+#endif
+#endif
 
 
 /**************************************
