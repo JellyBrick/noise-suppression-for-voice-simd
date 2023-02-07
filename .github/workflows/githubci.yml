@@ -39,13 +39,6 @@ jobs:
             build_params: "",
             artifact_prefix: "linux"
           }
-          - {
-            name: "macOS Latest Clang",
-            os: macos-latest,
-            cc: "clang", cxx: "clang++",
-            build_params: "",
-            artifact_prefix: "macos",
-          }
 
     steps:
       - uses: actions/checkout@v3
