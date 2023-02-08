@@ -7,7 +7,7 @@
 #include "rnnoise/rnn.h"
 #include "rnnoise/rnn_data.h"
 
-static const rnn_weight input_dense_weights[1008] = {
+const rnn_weight input_dense_weights[1008] = {
    -10, 0, -3, 1, -8, -6, 3, -13,
    1, 0, -3, -7, -5, -3, 6, -1,
    -6, 0, -6, -4, -1, -2, 1, 1,
@@ -598,7 +598,7 @@ static const rnn_weight vad_gru_bias[72] = {
    -29, 127, 34, -66, 49, 53, 27, 62
 };
 
-static const GRULayer vad_gru = {
+const GRULayer vad_gru = {
    vad_gru_bias,
    vad_gru_weights,
    vad_gru_recurrent_weights,
@@ -3116,7 +3116,7 @@ static const rnn_weight noise_gru_bias[144] = {
    -23, -64, 31, 86, -50, 2, -38, 7
 };
 
-static const GRULayer noise_gru = {
+const GRULayer noise_gru = {
    noise_gru_bias,
    noise_gru_weights,
    noise_gru_recurrent_weights,
@@ -10728,7 +10728,7 @@ static const rnn_weight denoise_gru_bias[288] = {
    -21, 25, 18, -58, 25, 126, -84, 127
 };
 
-static const GRULayer denoise_gru = {
+const GRULayer denoise_gru = {
    denoise_gru_bias,
    denoise_gru_weights,
    denoise_gru_recurrent_weights,
@@ -11024,28 +11024,8 @@ static const rnn_weight vad_output_bias[1] = {
    -50
 };
 
-static const DenseLayer vad_output = {
+const DenseLayer vad_output = {
    vad_output_bias,
    vad_output_weights,
    24, 1, ACTIVATION_SIGMOID
-};
-
-const struct RNNModel rnnoise_model_orig = {
-    24,
-    &input_dense,
-
-    24,
-    &vad_gru,
-
-    48,
-    &noise_gru,
-
-    96,
-    &denoise_gru,
-
-    22,
-    &denoise_output,
-
-    1,
-    &vad_output
 };

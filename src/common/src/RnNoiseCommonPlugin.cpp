@@ -267,7 +267,7 @@ void RnNoiseCommonPlugin::createDenoiseState() {
     m_prevRetroactiveVADGraceBlocks = 0;
 
     for (uint32_t i = 0; i < m_channelCount; i++) {
-        auto denoiseState = std::shared_ptr<DenoiseState>(rnnoise_create(nullptr), [](DenoiseState *st) {
+        auto denoiseState = std::shared_ptr<DenoiseState>(rnnoise_create(), [](DenoiseState *st) {
             rnnoise_destroy(st);
         });
 
