@@ -7,7 +7,7 @@
 #include "rnnoise/rnn.h"
 #include "rnnoise/rnn_data.h"
 
-const rnn_weight input_dense_weights[1008] = {
+static const rnn_weight input_dense_weights[1008] = {
    -10, 0, -3, 1, -8, -6, 3, -13,
    1, 0, -3, -7, -5, -3, 6, -1,
    -6, 0, -6, -4, -1, -2, 1, 1,
@@ -142,7 +142,7 @@ static const rnn_weight input_dense_bias[24] = {
    -126, 28, 127, 125, -30, 127, -89, -20
 };
 
-static const DenseLayer input_dense = {
+const DenseLayer input_dense = {
    input_dense_bias,
    input_dense_weights,
    42, 24, ACTIVATION_TANH
@@ -11008,7 +11008,7 @@ static const rnn_weight denoise_output_bias[22] = {
    -126, -105, -53, -49, -18, -9
 };
 
-static const DenseLayer denoise_output = {
+const DenseLayer denoise_output = {
    denoise_output_bias,
    denoise_output_weights,
    96, 22, ACTIVATION_SIGMOID
