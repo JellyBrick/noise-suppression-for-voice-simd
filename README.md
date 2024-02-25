@@ -206,22 +206,23 @@ External dependencies are vendored via [git-subrepo](https://github.com/ingydotn
 Improvements are welcomed! Though if you want to contribute anything sizeable - open an issue first.
 
 ### Compiling
+Note: Alter march/mtune flags as appropriate for the target CPU where the plugin will run. If building for multiple CPU targets, such as packaging or building for your studio/home/friends, do not set these at all.
 
 Compiling for x64:
 ```sh
-cmake -Bbuild-x64 -H. -GNinja -DCMAKE_BUILD_TYPE=Release
+cmake -D CMAKE_CXX_FLAGS=-march=native -mtune=native -D CMAKE_C_FLAGS=-march=native -mtune=native -Bbuild-x64 -H. -GNinja -DCMAKE_BUILD_TYPE=Release
 ninja -C build-x64
 ```
 
 Compiling for x32:
 ```sh
-cmake -D CMAKE_CXX_FLAGS=-m32 -D CMAKE_C_FLAGS=-m32 -Bbuild-x32 -H. -GNinja -DCMAKE_BUILD_TYPE=Release
+cmake -D CMAKE_CXX_FLAGS=-march=native -mtune=native -D CMAKE_C_FLAGS=-march=native -mtune=native -D -m32 -Bbuild-x32 -H. -GNinja -DCMAKE_BUILD_TYPE=Release
 ninja -C build-x32
 ```
 
 Cross-compiling for Windows x64 (MinGW builds are failing at the moment due to certain incompatibilities in JUCE):
 ```sh
-cmake -Bbuild-mingw64 -H. -GNinja -DCMAKE_TOOLCHAIN_FILE=toolchains/toolchain-mingw64.cmake -DCMAKE_BUILD_TYPE=Release
+cmake -D CMAKE_CXX_FLAGS=-march=native -mtune=native -D CMAKE_C_FLAGS=-march=native -mtune=native -Bbuild-mingw64 -H. -GNinja -DCMAKE_TOOLCHAIN_FILE=toolchains/toolchain-mingw64.cmake -DCMAKE_BUILD_TYPE=Release
 ninja -C build-mingw64
 ```
 
